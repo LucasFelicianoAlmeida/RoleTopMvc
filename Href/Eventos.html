@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/Style-Evento.css" type="text/css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <title>Role Top</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div clas="section-container">
+                
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#Espaco">Espaço</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><img src="img/logo.png" alt="Logo do Role Top" title="Logo"></li>
+                    <li><a href="SignIn.html">Sign in</a></li>
+                    <li><a href="SignUp.html">Sign up</a></li>
+                    <li id="roxo"><a href="#img-footer">Contatos</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- _____________________________________________________________________________Main______________________________________________________________________________-->
+    <main>
+       <section id="Event-type">
+           <div class="event-inform">
+                <h1>Tipos de Eventos</h1>
+                <ul>
+                    <li>
+                        <h2>Baile</h2>  
+
+                    </li>
+                    <li>
+                            <h2>Formatura</h2>
+
+                    </li>
+                    <li>
+                        <h2>Casamento</h2>
+                    </li>
+                    <li>
+                        <h2>Corporativo</h2>
+                    </li>
+                </ul>
+            </div>
+
+
+            <section id="Cadastrar-Evento">
+
+                <h1>Agende seu <span>Evento</span></h1>
+
+                
+                <form method="GET" action="index.html">
+                    <div>
+                        <label for="nome">Nome Completo</label>
+                        <br />
+                        <input id="nome" type="text" maxlength="20" minlength="3" name="nome" required/>
+                    </div>
+        
+                    <div>
+                        <label for="endereco">Endereço</label>
+                        <br />
+                        <input id="endereco" type="text" maxlength="20" minlength="3" name="endereco" required/>
+                    </div>
+        
+                    <div>
+                        <label for="telefone">Telefone para contato</label>
+                        <br />
+                        <input id="telefone" type="text" placeholder="11 12345 6789" required/>
+                    </div>
+                    
+                    <div>
+                        <label for="email">E-mail</label>
+                        <br />
+                        <input id="email" type="email" required/>
+                    </div>
+                    <div>
+                        <label for="data">Data</label>
+                        <br/>
+                        <input type="date" id="data" required/>
+                    </div>
+        
+                    <div class="double-field">
+                        <div>
+                            <label for="eventos">Tipo do Evento</label>
+                            <br/>
+                            <select id="eventos" required>
+                                <option value="" disabled selected>Selecione os eventos</option>
+                                <option value="baile">Baile</option>
+                                <option value="formatura">Formatura</option>
+                                <option value="casamento">Casamento</option>
+                                <option value="corporativo">Corporativo</option>
+                            </select>
+                        </div>
+                        <br/>
+                        <input type="submit" value="Enviar!" />
+                    </form>
+                </section>
+       </section>
+
+        
+
+
+    </main>
+
+    <!-- _________________________________________________________________________________Fim do Main____________________________________________________________________ -->
+    <footer>
+        <div id="mapa">
+            <h1>Nossa Localização</h1>
+            <div class="lista-item">
+                <input type="checkbox" id="faq-titulo-1" class="trigger-input">
+                <div class="trigger-wrapper">
+                    <label for="faq-titulo-1">
+                        <h2 class="faq-titulo">Onde é nossa Localização?</h2>
+                    </label>
+                    <p class="faq-conteudo">Alameda Barão de Limeira, 539 - Santa Cecilia, São Paulo - SP, 01202-001</p>
+                    <iframe class="faq-conteudo" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.889023842493!2d-46.64833568440731!3d-23.536493566560996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5843deb99025%3A0xb23619858bc7e63e!2sEscola%20SENAI%20de%20Inform%C3%A1tica!5e0!3m2!1spt-BR!2sbr!4v1575632951804!5m2!1spt-BR!2sbr" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                </div>
+            </div> 
+        </div>
+        <ul id="img-footer">
+            <li><img src="img2/001-facebook.png" alt="Facebook" title="Facebook" class="image-footer"></li>
+            <li><img src="img2/002-twitter.png" alt="Twitter" title="Twitter" class="image-footer"></li>
+            <li><img src="img2/011-instagram.png" alt="Instagram" title="Instagram" class="image-footer"></li>
+            <li><img src="img2/014-snapchat.png" alt="Snapchat" title="Snapchat" class="image-footer"></li>
+            
+        </ul>
+    </footer>
+</body>
+</html>

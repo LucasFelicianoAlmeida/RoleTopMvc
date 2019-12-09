@@ -1,0 +1,226 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    width: 100%;
+    font-family: Montserrat, sans-serif;
+}
+
+
+
+.section-container
+{
+    max-width: 1360px;
+    margin: 0 auto;   
+}
+
+nav ul
+{
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+nav li
+{
+    list-style: none;
+    padding: 30px;
+}
+
+nav img
+{
+    height: 1.6em;
+    margin: 20px;
+}
+
+nav
+{
+    position: fixed;
+    background: #24252A;
+    width: 100%;
+    z-index: 999;
+
+}
+
+
+a
+{
+   text-decoration: none;
+   color: #fff; 
+   scroll-behavior: smooth;
+}
+
+li a:hover
+{
+    transition: all 0.4s ease 0s;
+    color: #FAA804;
+    
+
+}
+
+ul > #roxo>a:hover
+{
+    color: rgba(116,0,94,1);
+    
+}
+
+
+header
+{
+    max-height: 1500px;
+    
+}
+/* ___________________________________________________________________________________________Conteudo-Evento_________________________________________________________________________________ */
+
+#Event-type
+{
+    max-height: 100%;
+}
+div.event-inform
+{
+    padding-top: 9em;
+    text-align: center;
+}
+
+.event-inform  h1
+{
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 4em;
+    text-transform: uppercase;
+    color: #24252A;
+}
+
+#Cadastrar-Evento
+{
+    text-align: center;
+    padding: 5em;
+}
+
+#Cadastrar-Evento > h1
+{
+    font-size: 5em;
+    text-transform: uppercase;
+}
+
+input
+{
+    background: rgb(95, 95, 95, .5);
+}
+
+form
+{
+    margin: 40px;
+}
+
+.event-inform  h2
+{
+    font-size: 3em;
+}
+
+
+
+
+
+
+/* ______________________________________________________________________________________________footer_______________________________________________________________________________*/
+/* ______________________________________________________________________________________________Redes Sociais_______________________________________________________________________ */
+
+#mapa
+{
+    max-width: 400px;
+    margin: 0 auto;
+    
+}
+
+.faq-titulo
+{
+    cursor: pointer;
+    padding-bottom: 1em;
+    margin: 0;
+}
+
+
+
+#mapa h1
+{
+    text-align: center;
+    margin: .5em 0 0.5em 0;
+}
+
+label > h2 
+{
+    text-align: center;
+    margin: 0.4 0 0.4 0;
+    color: #BEB0F4;
+}
+
+.trigger-wrapper p 
+{
+    text-align: center;
+    margin: 0.4 0 0.4 0;
+}
+
+.faq-titulo::before
+{
+    content: '';
+    display: inline-block;
+    height: 12px;
+    width: 24px;
+    margin-right: 10px;
+    background:#BEB0F4;
+}
+
+.faq-titulo::after
+{
+    content: '+';
+    float: right;  
+}
+
+.faq-conteudo
+{
+    padding: 10px;
+    color:  #6B7C93;
+    font-size: .875em;
+    display: none;
+}
+
+.trigger-input
+{
+    display: none;
+}
+
+.trigger-input:checked + .trigger-wrapper .faq-conteudo
+{
+    display: block;
+}
+/* _____________________________________________________________________________Redes Sociais_________________________________________________________________________________ */
+footer
+{
+    width: 100%;
+}
+
+footer ul
+{
+    display: flex;
+}
+
+footer ul li
+{
+    padding: 2em;
+    list-style-type: none;
+    margin: 0 auto;
+}
+
+.image-footer
+{
+    width: 2em;
+    cursor: pointer;
+    
+}
