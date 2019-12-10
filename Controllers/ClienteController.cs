@@ -2,11 +2,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RoleTopMvc.Repositories;
 using RoleTopMvc.ViewModels;
+using RoleTopMvc.Enums;
+using System;
 
 namespace RoleTopMvc.Controllers
 {
     public class ClienteController : AbstractController
     {
+        [HttpGet]
       public IActionResult Index()
       {
           return View( new BaseViewModel()
@@ -28,10 +31,48 @@ namespace RoleTopMvc.Controllers
 
                var cliente = clienteRepository.ObterPor(usuario);
 
-               if(cliente.Senha.Equals(senha))
+            if(cliente != null)
+                {
+                    if(cliente.Senha.Equals(senha))
+                    {
+                        switch(cliente.TipoUsuario){
+                            case (uint) TiposUsuario.CLIENTE:
+                                HttpContext.Session.SetString(SESSION_CLIENTE_EMAIL, usuario);
+                                HttpContext.Session.SetString(SESSION_CLIENTE_NOME, cliente.Nome);
+                                HttpContext.Session.SetString(SESSION_CLIENTE_TIPO, cliente.TipoUsuario.ToString());
+                                
+                                return RedirectToAction("Historico","Cliente");
+                            
+                            default:
+                                HttpContext.Session.SetString(SESSION_CLIENTE_EMAIL, usuario);
+                                HttpContext.Session.SetString(SESSION_CLIENTE_NOME, cliente.Nome);
+                                HttpContext.Session.SetString(SESSION_CLIENTE_TIPO, cliente.TipoUsuario.ToString());
+                                
+                                return RedirectToAction("Dashboard","Administrador");
+                            
+                        }
+                    }
+                    else 
+                    {
+                        return View("Erro", new RespostaViewModel("Senha incorreta"));
+                    }
+
+                } 
+                else
+                {
+                    return View("Erro", new RespostaViewModel($"Usuário {usuario} não encontrado"));
+                }
+
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine(e.StackTrace);
+                return View("Erro");
+            }
+                   
+               
            }
        }
     }
 
    
-}
