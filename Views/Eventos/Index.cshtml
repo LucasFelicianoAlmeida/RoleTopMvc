@@ -1,0 +1,77 @@
+<main>
+       <section id="Event-type">
+           <div class="event-inform">
+                <h1>Tipos de Eventos</h1>
+                <ul>
+                    <li>
+                        <h2>Baile</h2>  
+
+                    </li>
+                    <li>
+                            <h2>Formatura</h2>
+
+                    </li>
+                    <li>
+                        <h2>Casamento</h2>
+                    </li>
+                    <li>
+                        <h2>Corporativo</h2>
+                    </li>
+                </ul>
+            </div>
+
+
+            <section id="Cadastrar-Evento">
+
+                <h1>Agende seu <span>Evento</span></h1>
+
+                
+                <form method="GET" action="index.html">
+                    <div>
+                        <label for="nome">Nome Completo</label>
+                        <br />
+                        <input id="nome" type="text" maxlength="20" minlength="3" name="nome" required/>
+                    </div>
+        
+                    <div>
+                        <label for="endereco">Endereço</label>
+                        <br />
+                        <input id="endereco" type="text" maxlength="20" minlength="3" name="endereco" required/>
+                    </div>
+        
+                    <div>
+                        <label for="telefone">Telefone para contato</label>
+                        <br />
+                        <input id="telefone" type="text" placeholder="11 12345 6789" required/>
+                    </div>
+                    
+                    <div>
+                        <label for="email">E-mail</label>
+                        <br />
+                        <input id="email" type="email" required/>
+                    </div>
+                    <div>
+                        <label for="data">Data</label>
+                        <br/>
+                        <input type="date" id="data" required/>
+                    </div>
+        
+                    <div class="double-field">
+                        <div>
+                            <label for="eventos">Tipo do Evento</label>
+                            <br/>
+                            <select id="eventos" required>
+                                <option value="" disabled selected>Selecione os eventos</option>
+                                <option value="baile">Baile</option>
+                                <option value="formatura">Formatura</option>
+                                <option value="casamento">Casamento</option>
+                                <option value="corporativo">Corporativo</option>
+                            </select>
+                        </div>
+                        <br/>
+                        <input type="submit" value="Enviar!" />
+                    </form>
+                </section>
+       </section>
+
+    </main>

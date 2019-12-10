@@ -1,0 +1,47 @@
+    <main>
+       
+            <section id="SignUp">
+
+                <h1>Sign Up</h1>
+                <form method="POST" action='@Url.Action("CadastrarCliente", "Cadastro")'>
+                    <div class="default">
+                        <div>
+                            <label for="nome">Nome Completo</label>
+                            <br />
+                            <input id="nome" type="text" maxlength="20" minlength="3" name="nome"/>
+                        </div>
+                        <div>
+                            <label for="email">E-mail</label>
+                            <br />
+                            <input id="email" type="email" name="email" required />
+                        </div>
+                        <div>
+                                <label for="senha">Senha</label>
+                                <br/>
+                                <input id="senha" type="password" name="senha" required/>
+                            </div>
+                        
+                        <div class="default">
+                            <label for="endereco">Endereço</label>
+                        <br />
+                        <input id="endereco" type="text" maxlength="20" minlength="3" name="endereco"/>
+                    </div>
+                    
+                        <div>
+                            <label for="telefone">Telefone para contato</label>
+                            <br />
+                            <input id="telefone" type="text" placeholder="11 12345 6789" name="telefone"/>
+                        </div>
+                        
+                        
+                            <input type="submit" value="Finalizar Cadastro!" class="input-style" />
+                        </div>
+                        
+                        </form>
+                </section>
+                
+
+        
+
+
+    </main>

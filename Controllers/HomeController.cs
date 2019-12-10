@@ -3,16 +3,26 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using RoleTopMvc.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using RoleTopMvc.Models;
+using RoleTopMvc.ViewModels;
 
 namespace RoleTopMvc.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : AbstractController
     {
         public IActionResult Index()
         {
-            return View();
+            return View( new BaseViewModel()
+            {
+
+                NomeView = "Home",
+                UsuarioEmail = ObterUsuarioSession(),
+                UsuarioNome = ObterUsuarioNomeSession()
+
+            }
+            );
         }
 
         public IActionResult Privacy()
@@ -20,10 +30,6 @@ namespace RoleTopMvc.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        
     }
 }

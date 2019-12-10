@@ -1,77 +1,64 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - RoleTopMvc</title>
+﻿@model RoleTopMvc.ViewModels.BaseViewModel
 
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
-              crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
-    </environment>
-    <link rel="stylesheet" href="~/css/site.css" />
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/Style.css" type="text/css" rel="stylesheet">
+    @if(!"Home".Equals(@Model.NomeView))
+    {
+        <link href="~/css/Style-Evento.css" type="text/css" rel="stylesheet">
+        <link href="~/css/Style-Sign.css" type="text/css" rel="stylesheet">
+    }
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <title>Making a header</title>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RoleTopMvc</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+        <nav>
+            <div clas="section-container">
+                
+                <ul>
+                    <li><a asp-controller="Home" asp-action="Index" class="active">Home</a></li>
+                    <li><a href='@Url.Action("Index", "Home")#Espaco'>Espaço</a></li>
+                    <li><a asp-controller="Eventos" asp-action="Index">Eventos</a></li>
+                    <li><img src="~/img/logo.png" alt="Logo do Role Top" title="Logo"></li>
+                    <li><a asp-controller="Cliente" asp-action="Index">Sign in</a></li>
+                    <li><a asp-controller="Cadastro" asp-action="Index">Sign up</a></li>
+                    <li id="roxo"><a href="#img-footer">Contatos</a></li>
+                </ul>
             </div>
         </nav>
+        @if("Home".Equals(@Model.NomeView))
+        {
+            Html.RenderPartial("_HeaderHomePage");
+        }
     </header>
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - RoleTopMvc - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
-        </script>
-    </environment>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
-    @RenderSection("Scripts", required: false)
-</body>
-</html>
+        @RenderBody()
+        <footer>
+                <div id="mapa">
+                    <h1>Nossa Localização</h1>
+                    <div class="lista-item">
+                        <input type="checkbox" id="faq-titulo-1" class="trigger-input">
+                        <div class="trigger-wrapper">
+                            <label for="faq-titulo-1">
+                                <h2 class="faq-titulo">Onde é nossa Localização?</h2>
+                            </label>
+                            <p class="faq-conteudo">Alameda Barão de Limeira, 539 - Santa Cecilia, São Paulo - SP, 01202-001</p>
+                            <iframe class="faq-conteudo" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.889023842493!2d-46.64833568440731!3d-23.536493566560996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5843deb99025%3A0xb23619858bc7e63e!2sEscola%20SENAI%20de%20Inform%C3%A1tica!5e0!3m2!1spt-BR!2sbr!4v1575632951804!5m2!1spt-BR!2sbr" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                        </div>
+                    </div> 
+                </div>
+                <ul id="img-footer">
+                    <li><img src="~/img2/001-facebook.png" alt="Facebook" title="Facebook" class="image-footer"></li>
+                    <li><img src="~/img2/002-twitter.png" alt="Twitter" title="Twitter" class="image-footer"></li>
+                    <li><img src="~/img2/011-instagram.png" alt="Instagram" title="Instagram" class="image-footer"></li>
+                    <li><img src="~/img2/014-snapchat.png" alt="Snapchat" title="Snapchat" class="image-footer"></li>
+                    
+                </ul>
+            </footer>
+        </body>
+        </html>
