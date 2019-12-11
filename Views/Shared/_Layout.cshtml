@@ -14,11 +14,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <title>Making a header</title>
+    <title>Role Top</title>
 </head>
 <body>
     <header>
-        <nav>
+        @if("Agendamento".Equals(@Model.NomeView))
+        {
+            Html.RenderPartial("_NavSignOut");
+        }
+        else
+        {
+            <nav>
             <div clas="section-container">
                 
                 <ul>
@@ -32,6 +38,9 @@
                 </ul>
             </div>
         </nav>
+        }
+        
+        
         @if("Home".Equals(@Model.NomeView))
         {
             Html.RenderPartial("_HeaderHomePage");

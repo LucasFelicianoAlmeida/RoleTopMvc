@@ -36,8 +36,8 @@ namespace RoleTopMvc.Controllers
                         form["endereco"],
                         form["telefone"]  
                     );
-                    cliente.TipoUsuario = (uint) TiposUsuario.CLIENTE;
                     clienteRepository.Inserir(cliente);
+                    cliente.TipoUsuario = (uint) TiposUsuario.CLIENTE;
 
                     return View("Sucesso",  new RespostaViewModel()
                     {

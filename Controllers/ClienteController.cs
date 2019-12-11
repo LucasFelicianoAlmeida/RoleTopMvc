@@ -41,7 +41,7 @@ namespace RoleTopMvc.Controllers
                                 HttpContext.Session.SetString(SESSION_CLIENTE_NOME, cliente.Nome);
                                 HttpContext.Session.SetString(SESSION_CLIENTE_TIPO, cliente.TipoUsuario.ToString());
                                 
-                                return RedirectToAction("Historico","Cliente");
+                                return RedirectToAction("Index","Home");
                             
                             default:
                                 HttpContext.Session.SetString(SESSION_CLIENTE_EMAIL, usuario);
@@ -67,11 +67,13 @@ namespace RoleTopMvc.Controllers
             catch (Exception e)
             {
                 System.Console.WriteLine(e.StackTrace);
-                return View("Erro");
+                return View("Erro", new RespostaViewModel());
             }
                    
                
            }
+
+
        }
     }
 

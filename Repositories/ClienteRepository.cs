@@ -2,6 +2,7 @@ using System.IO;
 using RoleTopMvc.Models;
 
 namespace RoleTopMvc.Repositories
+
 {
     public class ClienteRepository : RepositoryBase
     {
@@ -36,7 +37,7 @@ namespace RoleTopMvc.Repositories
                     c.Senha = ExtrairValorDoCampo("senha", item);
                     c.Endereco = ExtrairValorDoCampo("endereco", item);
                     c.Telefone = ExtrairValorDoCampo("telefone", item);
-                    c.TipoUsuario = uint.Parse(ExtrairValorDoCampo("tipo usuario" , item));
+                    c.TipoUsuario = uint.Parse(ExtrairValorDoCampo("tipo-usuario" , item));
                  return c;   
                 }
                 
@@ -46,7 +47,7 @@ namespace RoleTopMvc.Repositories
 
         public string PrepararRegistroCSV(Cliente cliente)
         {
-            return $"tipo-usuario{cliente.TipoUsuario};nome={cliente.Nome};email={cliente.Email};senha={cliente.Senha};endereco={cliente.Endereco};telefone={cliente.Telefone}";
+            return $"tipo-usuario={cliente.TipoUsuario};nome={cliente.Nome};email={cliente.Email};senha={cliente.Senha};endereco={cliente.Endereco};telefone={cliente.Telefone}";
         }
         
     }
