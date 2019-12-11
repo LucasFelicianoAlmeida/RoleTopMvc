@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RoleTopMvc.ViewModels;
 using System;
@@ -17,5 +18,12 @@ namespace RoleTopMvc.Controllers
                 }
             );
         }
+
+        public IActionResult AgendarEventos(IFormCollection form)
+        {
+            try
+        }
+
+
     }
 }

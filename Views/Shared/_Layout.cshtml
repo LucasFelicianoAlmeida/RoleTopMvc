@@ -18,12 +18,8 @@
 </head>
 <body>
     <header>
-        @if("Agendamento".Equals(@Model.NomeView))
-        {
-            Html.RenderPartial("_NavSignOut");
-        }
-        else
-        {
+        
+        
             <nav>
             <div clas="section-container">
                 
@@ -32,13 +28,21 @@
                     <li><a href='@Url.Action("Index", "Home")#Espaco'>Espaço</a></li>
                     <li><a asp-controller="Eventos" asp-action="Index">Eventos</a></li>
                     <li><img src="~/img/logo.png" alt="Logo do Role Top" title="Logo"></li>
-                    <li><a asp-controller="Cliente" asp-action="Index">Sign in</a></li>
+                    @if(string.IsNullOrEmpty(@Model.UsuarioEmail))
+                    {
+                            <li><a asp-controller="Cliente" asp-action="Index">Sign in</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-controller="Home" asp-action="Index">Sign Out</a></li>
+                        <li><a asp-controller="Agendamento" asp-action="Index">Agendamento</a></li>
+                    }
                     <li><a asp-controller="Cadastro" asp-action="Index">Sign up</a></li>
                     <li id="roxo"><a href="#img-footer">Contatos</a></li>
                 </ul>
             </div>
         </nav>
-        }
+        
         
         
         @if("Home".Equals(@Model.NomeView))
