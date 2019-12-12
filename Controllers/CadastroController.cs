@@ -11,7 +11,7 @@ namespace RoleTopMvc.Controllers
         public class CadastroController : AbstractController
         {
             ClienteRepository clienteRepository = new ClienteRepository();
-            [HttpGet]
+            
             public IActionResult Index()
             {
                 return View( new BaseViewModel()
@@ -22,7 +22,7 @@ namespace RoleTopMvc.Controllers
                 });
             }
 
-            [HttpPost]
+            
             public IActionResult CadastrarCliente(IFormCollection form)
             {
                 ViewData["Action"] = "Cadastro";
@@ -36,8 +36,8 @@ namespace RoleTopMvc.Controllers
                         form["endereco"],
                         form["telefone"]  
                     );
-                    clienteRepository.Inserir(cliente);
                     cliente.TipoUsuario = (uint) TiposUsuario.CLIENTE;
+                    clienteRepository.Inserir(cliente);
 
                     return View("Sucesso",  new RespostaViewModel()
                     {

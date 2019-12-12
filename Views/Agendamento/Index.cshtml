@@ -6,7 +6,7 @@
             <section id="SignUp">
                 <h1>Agende seu Evento</h1>
 
-                <form method="GET" action='("Agendamento", "AgendarEvento")"'> 
+                <form method="POST" action='@Url.Action("AgendarEventos", "Agendamento")'> 
                     <div>
                         <label for="nome">Nome Completo</label>
                         <br />
@@ -22,25 +22,25 @@
                     <div>
                         <label for="telefone">Telefone para contato</label>
                         <br />
-                        <input id="telefone" type="text" placeholder="11 12345 6789" required/>
+                        <input id="telefone" type="text" placeholder="11 12345 6789" name="telefone" required/>
                     </div>
                     
                     <div>
                         <label for="email">E-mail</label>
                         <br />
-                        <input id="email" type="email" required/>
+                        <input id="email" type="email" name="email" required/>
                     </div>
                     <div>
-                        <label for="data">Data</label>
+                        <label for="data">Data do Evento</label>
                         <br/>
-                        <input type="date" id="data" required/>
+                        <input type="date" id="data" name="datadoevento"required/>
                     </div>
         
                     <div class="double-field">
                         <div>
                             <label for="eventos">Tipo do Evento</label>
                             <br/>
-                            <select id="eventos" required>
+                            <select id="eventos" name="eventos"required>
                                 <option value="" disabled selected>Selecione os eventos</option>
                                 <option value="baile">Baile</option>
                                 <option value="formatura">Formatura</option>

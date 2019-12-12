@@ -1,3 +1,4 @@
+using System;
 using RoleTopMvc.Enums;
 namespace RoleTopMvc.Models
 {
@@ -5,11 +6,11 @@ namespace RoleTopMvc.Models
     {
         public ulong Id {get;set;}
         public Cliente Cliente{get;set;}
-        public double Preco {get;set;}
-        public Baile Baile {get;set;}
-        public Formatura Formatura {get;set;}
-        public Casamento Casamento {get;set;}
-        public Corporativo Corporativo {get;set;}
+        public double PrecoTotal {get;set;}
+        public DateTime DataDoEvento {get;set;}
+        public string NomeEvento {get;set;}
+        
+        
         public uint Status {get;set;}
 
         public Agendamento()
@@ -17,10 +18,10 @@ namespace RoleTopMvc.Models
             this.Cliente = new Cliente();
             this.Id = 0;
             this.Status = (uint) StatusPedido.PENDENTE;
-            this.Baile = new Baile();
-            this.Formatura = new Formatura();
-            this.Casamento = new Casamento();
-            this.Corporativo = new Corporativo();
+            this.NomeEvento = "Evento";
+            
+            
+            
         }
     }
 

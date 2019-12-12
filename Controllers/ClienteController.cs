@@ -41,7 +41,7 @@ namespace RoleTopMvc.Controllers
                                 HttpContext.Session.SetString(SESSION_CLIENTE_NOME, cliente.Nome);
                                 HttpContext.Session.SetString(SESSION_CLIENTE_TIPO, cliente.TipoUsuario.ToString());
                                 
-                                return RedirectToAction("Index","Home");
+                                return RedirectToAction("Index","Agendamento");
                             
                             default:
                                 HttpContext.Session.SetString(SESSION_CLIENTE_EMAIL, usuario);
@@ -72,9 +72,15 @@ namespace RoleTopMvc.Controllers
                    
                
            }
-
+           public IActionResult Logoff()
+        {
+            HttpContext.Session.Remove(SESSION_CLIENTE_EMAIL);
+            HttpContext.Session.Remove(SESSION_CLIENTE_NOME);
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
 
        }
     }
+}
 
    
