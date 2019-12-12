@@ -1,48 +1,57 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using RoleTopMvc.Models;
 
 namespace RoleTopMvc.Repositories
 {
-    public class EventosRepository
+    public class EventosRepository : RepositoryBase
     {
-        private const string PATH = "Database/Evento.csv";
+        private const string PATH = "Eventos/Agendamento.csv";
 
         public EventosRepository () {
             if (!File.Exists (PATH)) {
                 File.Create (PATH).Close ();
             }
         }
-
-        public double ObterPrecoDoEvento(string nomeDoEvento)
+        public List<Evento> ObterTodosPorCliente(string emailCliente)
         {
-            var lista = ObterTodos();
-            var preco = 0.0;
-            foreach(var item in lista)
+            var agendamentos = ObterTodos();
+            List<Evento> agendamentosCliente = new List<Evento>();
+
+            foreach (var agendamento in agendamentos)
             {
-                if(item.Nome.Equals(nomeDoEvento))
+                if(agendamento.Cliente.Email.Equals(emailCliente))
                 {
-                    preco = item.Preco;
-                    break;
+                    agendamentosCliente.Add(agendamento);
                 }
-
             }
-            return preco;
+            return agendamentosCliente;
         }
-        public List<Evento> ObterTodos()
-        {
-            List<Evento> eventos = new List<Evento>();
+        
+        
+        public List<Agendamento> ObterTodos() {
+            var linhas = File.ReadAllLines (PATH);
+            List<Agendamento> agendamentos = new List<Agendamento>();
 
-            string[] linhas = File.ReadAllLines(PATH);
-            foreach(var linha in linhas)
-            {
-                Evento e  = new Evento();
-                string[] dados = linha.Split(";");
-                e.Nome = dados[0];
-                e.Preco = double.Parse(dados[1]);
-                eventos.Add(e);
+            foreach (var linha in linhas) {
+                Agendamento agendamento = new Agendamento ();
+
+                agendamento.Id = ulong.Parse(ExtrairValorDoCampo("id", linha));
+                agendamento.Status = uint.Parse(ExtrairValorDoCampo("status_pedido", linha));
+                agendamento.Cliente.Nome = ExtrairValorDoCampo("cliente_nome", linha);
+                agendamento.Cliente.Endereco = ExtrairValorDoCampo("cliente_endereco",linha);
+                agendamento.Cliente.Telefone = ExtrairValorDoCampo("cliente_telefone", linha);
+                agendamento.Cliente.Email = ExtrairValorDoCampo("cliente_email", linha);
+                agendamento.PrecoTotal = double.Parse(ExtrairValorDoCampo("preco_total", linha));
+                agendamento.DataDoEvento = DateTime.Parse(ExtrairValorDoCampo("data_datadoevento", linha));
+
+                agendamentos.Add(agendamento);
             }
-            return eventos; 
+            return agendamentos;
+        }
+        private string PrepararPedidoCSV (Agendamento a) {
+            return $"id={a.Id};status_pedido={a.Status};cliente_nome={a.Cliente.Nome};cliente_endereco={a.Cliente.Endereco};cliente_telefone={a.Cliente.Telefone};cliente_email={a.Cliente.Email};nome_evento={a.NomeEvento};";
         }
         
     }

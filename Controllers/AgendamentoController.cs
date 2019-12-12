@@ -34,13 +34,7 @@ namespace RoleTopMvc.Controllers
             avm.NomeView = "Agendamento";
             avm.UsuarioEmail = usuarioLogado;
             avm.UsuarioNome = nomeUsuarioLogado;            
-            return View( new BaseViewModel()
-                {
-                    NomeView = "Agendamento",
-                    UsuarioEmail = ObterUsuarioSession(),
-                    UsuarioNome = ObterUsuarioNomeSession()
-                }
-            );
+            return View(avm);
         }
         
         [HttpPost]
