@@ -9,26 +9,27 @@ namespace RoleTopMvc.Controllers
 {
     public class AgendamentoController : AbstractController
     {
-        EventosRepository eventoRepository = new EventosRepository();
+        
         ClienteRepository clienteRepository = new ClienteRepository();
         AgendamentoRepository agendamentoRepository = new AgendamentoRepository();
         public IActionResult Index()
         {
             AgendamentoViewModel avm = new AgendamentoViewModel();
-            avm.Eventos = eventoRepository.ObterTodos();
             
             
-            var usuarioLogado = ObterUsuarioSession();
+            var usuarioLogado = ObterUsuarioSession(); //OBTEM A SESSAO DO USUARIO 
             var nomeUsuarioLogado = ObterUsuarioNomeSession();
-            if(!string.IsNullOrEmpty(nomeUsuarioLogado))
+
+            if(!string.IsNullOrEmpty(usuarioLogado)) //SE O USUARIO LOGADO NAO É VAZIO OU NULO 
             {
-                avm.NomeUsuario = nomeUsuarioLogado;
+                avm.UsuarioEmail = usuarioLogado;
             }
 
             var clienteLogado = clienteRepository.ObterPor(usuarioLogado);
             if(clienteLogado !=null)
             {
-               avm.Cliente = clienteLogado; 
+                avm.NomeUsuario = nomeUsuarioLogado;
+                avm.Cliente = clienteLogado; 
             }
 
             avm.NomeView = "Agendamento";
@@ -79,7 +80,7 @@ namespace RoleTopMvc.Controllers
 
 
                        
-         }
+    }
 
 
  }

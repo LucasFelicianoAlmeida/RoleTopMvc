@@ -279,3 +279,26 @@ footer ul li
     cursor: pointer;
     
 }
+/* ______table */
+table {
+    text-align: center;
+    color: black;
+    border: 1px dashed #ff9933;
+    width: 100%;
+    padding: 5px;
+    word-break: normal;
+}
+
+th{
+    color: black;
+}
+
+th:hover
+{
+    color: red;
+}
+
+table > p
+{
+    color: black;
+}

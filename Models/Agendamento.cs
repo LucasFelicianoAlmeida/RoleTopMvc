@@ -19,6 +19,7 @@ namespace RoleTopMvc.Models
             this.Id = 0;
             this.Status = (uint) StatusPedido.PENDENTE;
             this.NomeEvento = "Evento";
+            this.PrecoTotal = 900;
             
             
             

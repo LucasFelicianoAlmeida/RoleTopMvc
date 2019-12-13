@@ -4,11 +4,16 @@ using RoleTopMvc.Repositories;
 using RoleTopMvc.ViewModels;
 using RoleTopMvc.Enums;
 using System;
+using System.Collections.Generic;
+using RoleTopMvc.Models;
 
 namespace RoleTopMvc.Controllers
 {
     public class ClienteController : AbstractController
     {
+
+        private AgendamentoRepository agendamentoRepository = new AgendamentoRepository();
+
         [HttpGet]
       public IActionResult Index()
       {
@@ -41,7 +46,7 @@ namespace RoleTopMvc.Controllers
                                 HttpContext.Session.SetString(SESSION_CLIENTE_NOME, cliente.Nome);
                                 HttpContext.Session.SetString(SESSION_CLIENTE_TIPO, cliente.TipoUsuario.ToString());
                                 
-                                return RedirectToAction("Index","Agendamento");
+                                return RedirectToAction("Historico","Cliente");
                             
                             default:
                                 HttpContext.Session.SetString(SESSION_CLIENTE_EMAIL, usuario);
@@ -80,6 +85,22 @@ namespace RoleTopMvc.Controllers
             return RedirectToAction("Index", "Home");
 
        }
+
+       public IActionResult Historico ()
+        {
+            var emailCliente = ObterUsuarioSession();
+            var pedidosCliente = agendamentoRepository.ObteTodosPorCliente(emailCliente);
+
+            return View(new HistoricoViewModel()
+            {
+                Agendamento = pedidosCliente,
+                NomeView = "Histórico",
+                UsuarioEmail = ObterUsuarioSession(),
+                UsuarioNome = ObterUsuarioNomeSession()
+            });
+        }
+
+        
     }
 }
 

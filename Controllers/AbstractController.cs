@@ -34,6 +34,20 @@ namespace RoleTopMvc.Controllers
             }
         }
 
+        protected string ObterUsuarioTipoSession()
+        {
+            var tipoUsuario = HttpContext.Session.GetString(SESSION_CLIENTE_TIPO);
+            if (!string.IsNullOrEmpty(tipoUsuario))
+            {
+                return tipoUsuario;
+            } 
+            else
+            {
+                return "";
+            }
+        }
+
+
         
     }
 }

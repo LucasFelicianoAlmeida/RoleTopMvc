@@ -45,6 +45,8 @@ namespace RoleTopMvc.Repositories
             
         }
 
+        
+
         public List<Agendamento> ObterAgendamentos()
         {
             var linhas = File.ReadAllLines(PATH);
@@ -54,15 +56,17 @@ namespace RoleTopMvc.Repositories
             {
                 Agendamento agendamento = new Agendamento();
 
+                agendamento.PrecoTotal = 900;
+
                 agendamento.Cliente.Nome = ExtrairValorDoCampo("cliente_Nome", linha);
                 agendamento.Cliente.Endereco = ExtrairValorDoCampo("cliente_Endereco", linha);
                 agendamento.Cliente.Telefone = ExtrairValorDoCampo("cliente_Telefone",linha);
-                agendamento.Cliente.Senha = ExtrairValorDoCampo("cliente_Senha", linha);
                 agendamento.Cliente.Email = ExtrairValorDoCampo("cliente_Email", linha);
-                agendamento.NomeEvento = ExtrairValorDoCampo("evento_nome", linha);
+                agendamento.NomeEvento = ExtrairValorDoCampo("evento_Nome", linha);
                 agendamento.Cliente.TipoUsuario = uint.Parse(ExtrairValorDoCampo("cliente_TipoUsuario", linha));
                 agendamento.DataDoEvento = DateTime.Parse(ExtrairValorDoCampo("date_pedido", linha));
-                agendamento.PrecoTotal = double.Parse(ExtrairValorDoCampo("preco_total", linha));
+                agendamento.PrecoTotal = double.Parse(ExtrairValorDoCampo("preco_Total", linha));
+                
 
                 agendamentos.Add(agendamento);
              }
@@ -73,7 +77,7 @@ namespace RoleTopMvc.Repositories
         {
             Cliente c = agendamento.Cliente;
             
-            return $"clente_Nome={c.Nome};cliente_Endereco={c.Endereco};cliente_Telefone={c.Telefone};cliente_Senha={c.Senha};cliente_Email={c.Email};evento_Nome={agendamento.NomeEvento};cliente_TipoUsuario={c.TipoUsuario};data_pedido={agendamento.DataDoEvento};preco_Total={agendamento.PrecoTotal}";
+            return $"cliente_Nome={c.Nome};cliente_Endereco={c.Endereco};cliente_Telefone={c.Telefone};cliente_Email={c.Email};evento_Nome={agendamento.NomeEvento};cliente_TipoUsuario={c.TipoUsuario};date_pedido={agendamento.DataDoEvento};preco_Total={agendamento.PrecoTotal}";
         }
     }
 }

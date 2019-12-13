@@ -1,1 +1,2 @@
 tipo_usuario=1;nome=senha;email=senha@gmail.com;senha=senha;endereco=senha;telefone=1231121
+tipo_usuario=0;nome=admin;email=admin@gmail.com;senha=admin;endereco=naosei;telefone=1231121
